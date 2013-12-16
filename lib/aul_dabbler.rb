@@ -28,9 +28,7 @@ class AulDabbler
 	end
 
 	def goto_comments_generator
-		@agent.get("http://services.autouplinktech.com/admin/iim/navigation/home.cfm?CommentsGenerator=yes")
 	end
-
 
 	def grab_vehicle_details (vehicle_id)
 		@agent.get("http://services.autouplinktech.com/admin/iim/CommentsWizard/ShortVehicleDetails.cfm?vehicleID=#{vehicle_id}")
@@ -39,10 +37,9 @@ class AulDabbler
 	end
 
 	def create_vehicle_table
+		@agent.get("http://services.autouplinktech.com/admin/iim/navigation/home.cfm?CommentsGenerator=yes")
 
-		self.goto_comments_generator
-
-		self.agent.page.frame_with(:name => 'bottom').click
+		@agent.page.frame_with(:name => 'bottom').click
 
 		vehicle_data = self.agent.page.search("tr")
 
