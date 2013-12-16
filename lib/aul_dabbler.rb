@@ -55,7 +55,17 @@ class AulDabbler
 	def grab_vehicle_features (vehicle_id)
 		@agent.get("http://services.autouplinktech.com/admin/iim/CommentsWizard/ShortVehicleDetails.cfm?vehicleID=#{vehicle_id}")
 		table = @agent.page.search("td")
- 		Sanitize.clean(table[7].to_s)
+ 		output = Hash.new
+
+ 		output["features"] = Sanitize.clean(table[7].to_s)
+ 		
+		output["engine"] = Sanitize.clean(table[1].search("tr")[1].search("td")[0].to_s)
+		output["trans"] = Sanitize.clean(table[1].search("tr")[2].search("td")[0].to_s)
+		output["miles"] = Sanitize.clean(table[1].search("tr")[3].search("td")[0].to_s).to_i
+		output["color"] = Sanitize.clean(table[1].search("tr")[4].search("td")[0].to_s)
+
+		output
+
 	end
 
 
