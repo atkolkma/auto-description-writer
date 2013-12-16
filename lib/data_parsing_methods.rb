@@ -9,3 +9,12 @@ class Array
 	end
 
 end
+
+class String
+
+	def enter_csvs_into_hash(existing_hash)
+	end
+
+end
+
+

@@ -1,6 +1,6 @@
 require "./lib/aul_dabbler.rb"
 require "./lib/carfax_dabbler.rb"
-require "./lib/inventory_table_methods.rb"
+require "./lib/data_parsing_methods.rb"
 
 
 
@@ -10,14 +10,19 @@ aul_dabbler = AulDabbler.new
 
 aul_dabbler.aul_login
 
-inventory = aul_dabbler.vehicle_table
+inventory = aul_dabbler.create_vehicle_table
 
-puts inventory.used.with_comments
-puts inventory.length
 puts inventory.used.length
-puts inventory.used.with_comments.length
 
 puts "done"
+
+######Grabs detailed feature data from AUL on all used vehicles with no description########
+
+
+
+
+
+
 
 
 

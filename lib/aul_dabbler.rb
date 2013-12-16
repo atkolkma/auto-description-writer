@@ -1,7 +1,7 @@
 require "rubygems"
 require "mechanize"
 require 'sanitize'
-require "~/development/automate\ vehicle\ descriptions/lib/inventory_table.rb"
+require "~/development/automate\ vehicle\ descriptions/lib/data_parsing_methods.rb"
 
 class AulDabbler
 
@@ -30,8 +30,15 @@ class AulDabbler
 	def goto_comments_generator
 		@agent.get("http://services.autouplinktech.com/admin/iim/navigation/home.cfm?CommentsGenerator=yes")
 	end
-	
-	def vehicle_table
+
+	def goto_vehicle_details (vehicle_id)
+		@agent.get("http://services.autouplinktech.com/admin/iim/CommentsWizard/ShortVehicleDetails.cfm?vehicleID=#{vehicle_id}")
+	end
+
+	def grab_details
+	end
+
+	def create_vehicle_table
 
 		self.goto_comments_generator
 
@@ -47,6 +54,7 @@ class AulDabbler
 
 		vehicle_table
 	end
+
 
 end
 
