@@ -12,16 +12,10 @@ aul_dabbler.aul_login
 
 inventory = aul_dabbler.create_vehicle_table
 
-aul_dabbler.goto_vehicle_details(inventory.used[50]["aul_id"])
-
-puts inventory.used[50]["aul_id"]
-
-puts aul_dabbler.agent.page.body
-
-
 
 ######Grabs detailed feature data from AUL on all used vehicles with no description########
 
+puts aul_dabbler.grab_vehicle_details(inventory.used[50]["aul_id"])
 
 
 

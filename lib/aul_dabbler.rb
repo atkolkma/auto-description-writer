@@ -31,11 +31,11 @@ class AulDabbler
 		@agent.get("http://services.autouplinktech.com/admin/iim/navigation/home.cfm?CommentsGenerator=yes")
 	end
 
-	def goto_vehicle_details (vehicle_id)
-		@agent.get("http://services.autouplinktech.com/admin/iim/CommentsWizard/ShortVehicleDetails.cfm?vehicleID=#{vehicle_id}")
-	end
 
-	def grab_details
+	def grab_vehicle_details (vehicle_id)
+		@agent.get("http://services.autouplinktech.com/admin/iim/CommentsWizard/ShortVehicleDetails.cfm?vehicleID=#{vehicle_id}")
+		table = @agent.page.search("td")
+ 		Sanitize.clean(table[7].to_s)
 	end
 
 	def create_vehicle_table

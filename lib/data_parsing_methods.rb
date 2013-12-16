@@ -12,7 +12,7 @@ end
 
 class String
 
-	def enter_csvs_into_hash(existing_hash)
+	def csvs_to_array
 	end
 
 end
