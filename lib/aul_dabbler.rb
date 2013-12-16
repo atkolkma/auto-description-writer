@@ -3,6 +3,7 @@ require "mechanize"
 require 'sanitize'
 require "~/development/automate\ vehicle\ descriptions/lib/data_parsing_methods.rb"
 
+
 class AulDabbler
 
 	attr_reader :agent
@@ -31,13 +32,6 @@ class AulDabbler
 	    @agent.submit(form)
 	end
 
-	#pulls vehicle features from AUL in the form of a single string. Features separated by commas
-	def grab_vehicle_details (vehicle_id)
-		@agent.get("http://services.autouplinktech.com/admin/iim/CommentsWizard/ShortVehicleDetails.cfm?vehicleID=#{vehicle_id}")
-		table = @agent.page.search("td")
- 		Sanitize.clean(table[7].to_s)
-	end
-
 	#Goes to the AUL comments generator page and creates an array of inventory data.
 	#Each row is a hash with basic vehicle details for each entry.
 	#This vehicle table is used in master_dabbler to reference specific vehicle ids
@@ -56,6 +50,14 @@ class AulDabbler
 
 		vehicle_table
 	end
+
+	#pulls vehicle features from AUL in the form of a single string. Features separated by commas
+	def grab_vehicle_features (vehicle_id)
+		@agent.get("http://services.autouplinktech.com/admin/iim/CommentsWizard/ShortVehicleDetails.cfm?vehicleID=#{vehicle_id}")
+		table = @agent.page.search("td")
+ 		Sanitize.clean(table[7].to_s)
+	end
+
 
 
 end

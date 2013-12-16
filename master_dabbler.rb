@@ -13,10 +13,15 @@ aul_dabbler.aul_login
 inventory = aul_dabbler.create_vehicle_table
 
 
-######Grabs detailed feature data from AUL on all used vehicles with no description########
+######Grabs vehicle feature data from AUL on all used vehicles with no comments########
 
-puts aul_dabbler.grab_vehicle_details(inventory.used[50]["aul_id"])
+used_inventory_data = inventory.used.no_comments
 
+used_inventory_data.each do |n|
+	n["features"] = aul_dabbler.grab_vehicle_features(n["aul_id"])
+end
+
+puts used_inventory_data[7]
 
 
 

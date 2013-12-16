@@ -1,3 +1,6 @@
+require "~/development/automate\ vehicle\ descriptions/lib/aul_dabbler.rb"
+
+
 class Array
 
 	def used
@@ -11,9 +14,6 @@ class Array
 end
 
 class String
-
-	def csvs_to_array
-	end
 
 end
 
