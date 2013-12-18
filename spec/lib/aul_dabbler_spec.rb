@@ -1,1 +1,1 @@
-# require "aul_dabbler"
+require "aul_dabbler"
