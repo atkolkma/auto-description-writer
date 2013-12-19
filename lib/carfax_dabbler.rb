@@ -40,6 +40,9 @@ class CarFaxDabbler
 	output["certified"] = Sanitize.clean(@agent.page.search("#cpoRow").to_s.gsub("\r", "\n")).strip
 	output["maintenance"] = Sanitize.clean(@agent.page.search("#wellMaintainedRow").to_s.gsub("\r", "\n")).strip
 	output["number_owners"] = Sanitize.clean(@agent.page.search("#ownershipCountRow").search("strong").to_s.gsub("\r", "\n")).strip.to_i
+	if output["number_owners"] == 0
+		output["number_owners"] = Sanitize.clean(@agent.page.search("#ownershipCountRow").to_s.gsub("\r", "\n")).strip
+	end
 
 	output
 	end
