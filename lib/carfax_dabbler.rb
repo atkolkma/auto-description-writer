@@ -1,5 +1,6 @@
 require "rubygems"
 require "mechanize"
+require 'sanitize'
 
 
 class CarFaxDabbler
@@ -30,4 +31,21 @@ class CarFaxDabbler
 		@agent.get("http://www.carfaxonline.com/api/report?vin=#{vin}&track=true")
 	end
 
+	def grab_report_details (vin)
+	@agent.get("http://www.carfaxonline.com/api/report?vin=#{vin}&track=true")
+
+	output = Hash.new
+
+	output["body_type"] = Sanitize.clean(@agent.page.search("#headerBodyType").to_s.gsub("\r", "\n")).strip
+	output["engine"] = Sanitize.clean(@agent.page.search("#headerEngineInfo").to_s.gsub("\r", "\n")).strip
+	output["drive_line"] = Sanitize.clean(@agent.page.search("#headerDriveline").to_s.gsub("\r", "\n")).strip
+	output["full_title"] = Sanitize.clean(@agent.page.search("#headerMakeModelYear").to_s.gsub("\r", "\n")).strip
+
+	output
 end
+
+end
+
+
+
+

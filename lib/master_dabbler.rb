@@ -1,6 +1,6 @@
-require "./lib/aul_dabbler.rb"
-require "./lib/carfax_dabbler.rb"
-require "./lib/data_parsing_methods.rb"
+require_relative "./aul_dabbler.rb"
+require_relative "./carfax_dabbler.rb"
+require_relative "./data_parsing_methods.rb"
 
 
 
@@ -30,8 +30,5 @@ inventory = aul_dabbler.create_vehicle_table
 carfax_dabbler = CarFaxDabbler.new
 carfax_dabbler.carfax_login
 
-carfax_dabbler.carfax_vin_search("1G1AT58H697144202")
+puts carfax_dabbler.grab_report_details("1G1AT58H697144202")
 
-puts carfax_dabbler.agent.page.search("div#headerBodyType")
-
-# puts "http://www.carfaxonline.com/api/report?vin=#{vin}&track=true"
