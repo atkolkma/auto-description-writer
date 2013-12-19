@@ -27,10 +27,6 @@ class CarFaxDabbler
 	    @agent.submit(form)
 	end
 
-	def carfax_vin_search (vin)
-		@agent.get("http://www.carfaxonline.com/api/report?vin=#{vin}&track=true")
-	end
-
 	def grab_report_details (vin)
 	@agent.get("http://www.carfaxonline.com/api/report?vin=#{vin}&track=true")
 
@@ -38,11 +34,15 @@ class CarFaxDabbler
 
 	output["body_type"] = Sanitize.clean(@agent.page.search("#headerBodyType").to_s.gsub("\r", "\n")).strip
 	output["engine"] = Sanitize.clean(@agent.page.search("#headerEngineInfo").to_s.gsub("\r", "\n")).strip
-	output["drive_line"] = Sanitize.clean(@agent.page.search("#headerDriveline").to_s.gsub("\r", "\n")).strip
+	output["drive_train"] = Sanitize.clean(@agent.page.search("#headerDriveline").to_s.gsub("\r", "\n")).strip
 	output["full_title"] = Sanitize.clean(@agent.page.search("#headerMakeModelYear").to_s.gsub("\r", "\n")).strip
+	output["damage"] = Sanitize.clean(@agent.page.search("#accidentDamageRow").to_s.gsub("\r", "\n")).strip
+	output["number_owners"] = Sanitize.clean(@agent.page.search("#ownershipCountRow").search("strong").to_s.gsub("\r", "\n")).strip.to_i
+	
+
 
 	output
-end
+	end
 
 end
 
