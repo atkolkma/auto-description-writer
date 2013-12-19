@@ -37,9 +37,9 @@ class CarFaxDabbler
 	output["drive_train"] = Sanitize.clean(@agent.page.search("#headerDriveline").to_s.gsub("\r", "\n")).strip
 	output["full_title"] = Sanitize.clean(@agent.page.search("#headerMakeModelYear").to_s.gsub("\r", "\n")).strip
 	output["damage"] = Sanitize.clean(@agent.page.search("#accidentDamageRow").to_s.gsub("\r", "\n")).strip
+	output["certified"] = Sanitize.clean(@agent.page.search("#cpoRow").to_s.gsub("\r", "\n")).strip
+	output["maintenance"] = Sanitize.clean(@agent.page.search("#wellMaintainedRow").to_s.gsub("\r", "\n")).strip
 	output["number_owners"] = Sanitize.clean(@agent.page.search("#ownershipCountRow").search("strong").to_s.gsub("\r", "\n")).strip.to_i
-	
-
 
 	output
 	end
