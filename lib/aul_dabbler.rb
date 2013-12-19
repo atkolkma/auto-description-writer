@@ -79,7 +79,7 @@ def parse_row_to_array (vehicle_row)
 
 	vehicle_info["aul_id"] = Sanitize.clean(vehicle_entries[0].to_s).strip
 	vehicle_info["stock_num"] = Sanitize.clean(vehicle_entries[1].to_s).strip
-	vehicle_info["year"] = Sanitize.clean(vehicle_entries[2].to_s).strip
+	vehicle_info["year"] = Sanitize.clean(vehicle_entries[2].to_s).strip.to_i
 	vehicle_info["make"] = Sanitize.clean(vehicle_entries[3].to_s).strip
 	vehicle_info["model"] = Sanitize.clean(vehicle_entries[4].to_s).strip
 	vehicle_info["package"] = Sanitize.clean(vehicle_entries[5].to_s).strip
