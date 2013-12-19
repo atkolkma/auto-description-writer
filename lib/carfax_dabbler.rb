@@ -32,10 +32,10 @@ class CarFaxDabbler
 
 	output = Hash.new
 
-	output["body_type"] = Sanitize.clean(@agent.page.search("#headerBodyType").to_s.gsub("\r", "\n")).strip.capitalize
+	output["body_type"] = Sanitize.clean(@agent.page.search("#headerBodyType").to_s.gsub("\r", "\n")).strip 
 	output["engine"] = Sanitize.clean(@agent.page.search("#headerEngineInfo").to_s.gsub("\r", "\n")).strip
-	output["drive_train"] = Sanitize.clean(@agent.page.search("#headerDriveline").to_s.gsub("\r", "\n")).strip.capitalize
-	output["full_title"] = Sanitize.clean(@agent.page.search("#headerMakeModelYear").to_s.gsub("\r", "\n")).strip.capitalize
+	output["drive_train"] = Sanitize.clean(@agent.page.search("#headerDriveline").to_s.gsub("\r", "\n")).strip
+	output["full_title"] = Sanitize.clean(@agent.page.search("#headerMakeModelYear").to_s.gsub("\r", "\n")).strip
 	output["damage"] = Sanitize.clean(@agent.page.search("#accidentDamageRow").to_s.gsub("\r", "\n")).strip
 	output["certified"] = Sanitize.clean(@agent.page.search("#cpoRow").to_s.gsub("\r", "\n")).strip
 	output["maintenance"] = Sanitize.clean(@agent.page.search("#wellMaintainedRow").to_s.gsub("\r", "\n")).strip

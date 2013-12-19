@@ -11,6 +11,17 @@ class Array
 end
 
 
+class String
+
+	def capitalize_words
+
+		words = self.split
+		words.each {|n| n.capitalize!}
+		words.join(" ")
+
+	end
+
+end
 
 
 
