@@ -17,13 +17,14 @@ inventory = aul_dabbler.create_vehicle_table
 
 used_inventory_data = inventory.used.no_comments
 
-# used_inventory_data.each do |n|
-# 	n["features"] = aul_dabbler.grab_vehicle_features(n["aul_id"])["features"]
-# 	n["engine"] = aul_dabbler.grab_vehicle_features(n["aul_id"])["engine"]
-# 	n["trans"] = aul_dabbler.grab_vehicle_features(n["aul_id"])["trans"]
-# 	n["miles"] = aul_dabbler.grab_vehicle_features(n["aul_id"])["miles"]
-# 	n["color"] = aul_dabbler.grab_vehicle_features(n["aul_id"])["color"]
-# end
+used_inventory_data.each do |n|
+	vehicle_data = aul_dabbler.grab_vehicle_features(n["aul_id"])
+	n["features"] = vehicle_data["features"]
+	n["engine"] = vehicle_data["engine"]
+	n["trans"] = vehicle_data["trans"]
+	n["miles"] = vehicle_data["miles"]
+	n["color"] = vehicle_data["color"]
+end
 
 #####Login to Carfax and add vehicle data to used_inventory_data
 
