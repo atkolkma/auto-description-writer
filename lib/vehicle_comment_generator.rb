@@ -1,3 +1,10 @@
+require_relative "./aul_dabbler.rb"
+
+def build_mentionable_features_array (any_aul_id)
+	all_features_grabber = AulDabbler.new
+	features = all_features_grabber.grab_possible_features(any_aul_id)
+end
+
 # unmentionable_features = Hash.new
 # unmentionable_features["safety"] = unmentionable_safety_features = [""]
 # unmentionable_features["convenience"] = unmentionable_convenience_features = [""]

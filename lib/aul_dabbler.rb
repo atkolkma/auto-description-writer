@@ -2,7 +2,6 @@ require "rubygems"
 require "mechanize"
 require 'sanitize'
 require "~/development/automate\ vehicle\ descriptions/lib/data_parsing_methods.rb"
-require "~/development/automate\ vehicle\ descriptions/lib/vehicle_comment_generator.rb"
 
 
 class AulDabbler
@@ -69,6 +68,9 @@ class AulDabbler
 
 	end
 
+	def grab_possible_features (any_aul_id)
+		@agent.get("http://services.autouplinktech.com/admin/iim/InventoryManagement/UsedVeh.cfm?CurrentPage=1&SOrder=&Sort=&VehicleID=#{any_aul_id}&Edit=Yes&Inventory=Used&DealerID=9529&ViewAll=false&DisplayDeleted=0&DisplayActive=true")
+	end
 
 
 end
