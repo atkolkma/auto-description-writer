@@ -2,6 +2,7 @@ require "rubygems"
 require "mechanize"
 require 'sanitize'
 require "~/development/automate\ vehicle\ descriptions/lib/data_parsing_methods.rb"
+require "~/development/automate\ vehicle\ descriptions/lib/vehicle_comment_generator.rb"
 
 
 class AulDabbler
@@ -89,5 +90,10 @@ def parse_row_to_array (vehicle_row)
 
 	vehicle_info
 end
+
+#builds arrays of valuable features
+
+mentionable_features_grabber = AulDabbler.new
+
 
 
