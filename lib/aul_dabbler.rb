@@ -70,6 +70,11 @@ class AulDabbler
 
 	def grab_possible_features (any_aul_id)
 		@agent.get("http://services.autouplinktech.com/admin/iim/InventoryManagement/UsedVeh.cfm?CurrentPage=1&SOrder=&Sort=&VehicleID=#{any_aul_id}&Edit=Yes&Inventory=Used&DealerID=9529&ViewAll=false&DisplayDeleted=0&DisplayActive=true")
+		results = @agent.page.search("#optionsView").search('td[id^="optionText"]').to_a
+		results.map! do |n| 
+			Sanitize.clean(n.to_s)
+		end
+		results
 	end
 
 

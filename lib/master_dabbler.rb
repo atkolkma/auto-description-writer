@@ -33,6 +33,8 @@ end
 carfax_dabbler = CarFaxDabbler.new
 carfax_dabbler.carfax_login
 
+puts aul_dabbler.grab_possible_features(used_inventory_data[1]["aul_id"])
+
 # used_inventory_data.each do |n|
 # 	vehicle_data = carfax_dabbler.grab_report_details(n["vin"])
 # 	n["body_type"] = vehicle_data["body_type"]
@@ -57,7 +59,7 @@ carfax_dabbler.carfax_login
 #  	body_types.push(entry)		
 # end
 
-comments = generate_vehicles_comments(used_inventory_data)
+# comments = generate_all_vehicle_comments(used_inventory_data)
 
-puts comments
+
 

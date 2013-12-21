@@ -5,6 +5,9 @@ def build_mentionable_features_array (any_aul_id)
 	features = all_features_grabber.grab_possible_features(any_aul_id)
 end
 
+
+
+
 # unmentionable_features = Hash.new
 # unmentionable_features["safety"] = unmentionable_safety_features = [""]
 # unmentionable_features["convenience"] = unmentionable_convenience_features = [""]
@@ -31,7 +34,7 @@ end
 # 	mentionable_saftey(features_list_page)
 # end
 
-def generate_vehicles_comments (vehicles_data)
+def generate_all_vehicle_comments (vehicles_data)
 	comments_table = Array.new
 	vehicles_data.each do |n|
 		vehicle_comment = {"vin" => n["vin"], "stock_num" => n["stock_num"], "comment" => comment_generator(n)}
